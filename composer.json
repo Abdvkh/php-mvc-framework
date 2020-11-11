@@ -1,0 +1,15 @@
+{
+    "name": "developer/mvc",
+    "authors": [
+        {
+            "name": "Abubakr Abduvakhidov",
+            "email": "abubakr@edu.thedevs.co"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}

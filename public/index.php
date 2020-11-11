@@ -13,9 +13,4 @@ $app->router->get('/contact', function(){
     return "Contact";
 });
 
-//$router = new Router();
-//$router->get('/', function(){
-//    return "Hello world";
-//});
-
 $app->run();
