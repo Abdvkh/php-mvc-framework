@@ -9,6 +9,7 @@ use app\core\Application;
 use app\controllers\SiteController;
 
 $config = [
+    'userClass' => \app\models\User::class,
     'db' => [
         'dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=mvc_framework',// $_ENV['DB_DSN'],
         'user' => 'root',//$_ENV['DB_USER'],
@@ -28,5 +29,7 @@ $app->router->get('/login', [\app\controllers\AuthController::class, 'login']);
 $app->router->post('/login', [\app\controllers\AuthController::class, 'login']);
 $app->router->get('/register', [\app\controllers\AuthController::class, 'register']);
 $app->router->post('/register', [\app\controllers\AuthController::class, 'register']);
+
+$app->router->get('/logout', [\app\controllers\AuthController::class, 'logout']);
 
 $app->run();
