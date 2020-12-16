@@ -1,18 +1,23 @@
 <?php
 
 
-namespace app\core;
+namespace app\core\db;
 
+
+use app\core\Application;
 
 class Database
 {
     public \PDO $pdo;
+    public string $dbname;
 
     /**
      * Database constructor.
      */
     public function __construct(array $config)
     {
+        $this->dbname = $config['dbname'] ? $config['dbname'].'.' : '';
+
         $dsn = $config['dsn'] ?? '';
         $user = $config['user'] ?? '';
         $password = $config['password'] ?? '';
@@ -51,7 +56,7 @@ class Database
 
     public function createMigrationsTable()
     {
-        $this->pdo->exec("CREATE TABLE IF NOT EXISTS mvc_framework.migrations (
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS {$this->bdname}migrations (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 migration VARCHAR(255),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -60,7 +65,7 @@ class Database
 
     public function getAppliedMigrations()
     {
-        $statement = $this->pdo->prepare("SELECT migration FROM mvc_framework.migrations");
+        $statement = $this->pdo->prepare("SELECT migration FROM {$this->bdname}migrations");
         $statement->execute();
 
         return $statement->fetchAll(\PDO::FETCH_COLUMN);
@@ -69,7 +74,7 @@ class Database
     public function saveMigrations(array $newMigrations)
     {
         $str = implode(',', array_map(fn($m) => "('$m')", $newMigrations));
-        $statement = $this->pdo->prepare("INSERT INTO mvc_framework.migrations(migration) VALUES $str");
+        $statement = $this->pdo->prepare("INSERT INTO {$this->bdname}migrations(migration) VALUES $str");
         $statement->execute();
     }
 

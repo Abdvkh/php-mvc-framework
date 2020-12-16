@@ -10,7 +10,8 @@ use app\controllers\SiteController;
 
 $config = [
     'db' => [
-        'dsn' => 'mysql:host=127.0.0.1;port3306;dbname=mvc_framework',// $_ENV['DB_DSN'],
+        'dsn' => 'mysql:host=127.0.0.1;port3306;',// $_ENV['DB_DSN'],
+        'dbname' => 'mvc_framework',
         'user' => 'root',//$_ENV['DB_USER'],
         'password' => ''//$_ENV['DB_PASSWORD']
     ]

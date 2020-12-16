@@ -1,8 +1,11 @@
 <?php
 
 
-namespace app\core;
+namespace app\core\db;
 
+
+use app\core\Application;
+use app\core\Model;
 
 abstract class DbModel extends Model
 {
@@ -16,7 +19,8 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes  = $this->attributes();
         $params = array_map(fn($attr) => ":$attr", $attributes);
-        $statement = self::prepare("INSERT INTO mvc_framework.$tableName ("
+        $dbname = Application::$app->db->dbname;
+        $statement = self::prepare("INSERT INTO {$dbname}$tableName ("
                                         .implode(',', $attributes)
                                         .") VALUES("
                                         .implode(',', $params)
@@ -34,7 +38,8 @@ abstract class DbModel extends Model
         $tableName = static::tableName();
         $attributes = array_keys($where);
         $sql = implode('AND', array_map(fn($attr) => "$attr = :$attr", $attributes));
-        $statement = self::prepare("SELECT * FROM mvc_framework.$tableName WHERE $sql");
+        $dbname = Application::$app->db->dbname;
+        $statement = self::prepare("SELECT * FROM {$dbname}$tableName WHERE $sql");
         foreach ($where as $key => $item){
             $statement->bindValue(":$key", $item);
         }

@@ -11,7 +11,8 @@ use app\controllers\SiteController;
 $config = [
     'userClass' => \app\models\User::class,
     'db' => [
-        'dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=mvc_framework',// $_ENV['DB_DSN'],
+        'dsn' => 'mysql:host=127.0.0.1;port=3306;',// $_ENV['DB_DSN'],
+        'dbname' => 'mvc_framework',
         'user' => 'root',//$_ENV['DB_USER'],
         'password' => ''//$_ENV['DB_PASSWORD']
     ]
@@ -23,7 +24,7 @@ $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/contact', 'contact');
 
 $app->router->get('/contact', [SiteController::class, 'contact']);
-$app->router->post('/contact', [SiteController::class, 'handleContact']);
+$app->router->post('/contact', [SiteController::class, 'contact']);
 
 $app->router->get('/login', [\app\controllers\AuthController::class, 'login']);
 $app->router->post('/login', [\app\controllers\AuthController::class, 'login']);
