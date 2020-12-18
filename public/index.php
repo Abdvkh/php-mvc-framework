@@ -2,19 +2,21 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-//$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
-//$dotenv->load();
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 
-use app\core\Application;
+use abubakr\phpmvc\Application;
 use app\controllers\SiteController;
 
 $config = [
     'userClass' => \app\models\User::class,
     'db' => [
-        'dsn' => 'mysql:host=127.0.0.1;port=3306;',// $_ENV['DB_DSN'],
-        'dbname' => 'mvc_framework',
-        'user' => 'root',//$_ENV['DB_USER'],
-        'password' => ''//$_ENV['DB_PASSWORD']
+        'db' => [
+            'dsn' => $_ENV['DB_DSN'],
+            'dbname' => $_ENV['DB_NAME'],
+            'user' => $_ENV['DB_USER'],
+            'password' => $_ENV['DB_PASSWORD']
+        ]
     ]
 ];
 

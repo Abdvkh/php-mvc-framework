@@ -1,9 +1,9 @@
 <?php
-/** @var $this \app\core\View */
+/** @var $this \abubakr\phpmvc\View */
 /** @var $model \app\models\ContactForm */
 
-use app\core\form\Form;
-use app\core\form\TextAreaField;
+use abubakr\phpmvc\form\Form;
+use abubakr\phpmvc\form\TextAreaField;
 
 $this->title = 'Contact';
 ?>

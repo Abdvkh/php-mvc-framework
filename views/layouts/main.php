@@ -1,5 +1,5 @@
 <?php
-use app\core\Application;
+use abubakr\phpmvc\Application;
 
 ?>
 <!doctype html>

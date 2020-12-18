@@ -4,11 +4,11 @@
 namespace app\controllers;
 
 
-use app\core\Application;
-use app\core\Controller;
-use app\core\middlewares\AuthMiddleware;
-use app\core\Request;
-use app\core\Response;
+use abubakr\phpmvc\Application;
+use abubakr\phpmvc\Controller;
+use abubakr\phpmvc\middlewares\AuthMiddleware;
+use abubakr\phpmvc\Request;
+use abubakr\phpmvc\Response;
 use app\models\LoginForm;
 use app\models\User;
 use http\Header;

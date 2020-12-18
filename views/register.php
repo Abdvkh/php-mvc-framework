@@ -3,7 +3,7 @@
 ?>
 
 <h1>Create an account</h1>
-<?php $form = \app\core\form\Form::begin('', 'post')?>
+<?php $form = \abubakr\phpmvc\form\Form::begin('', 'post')?>
     <div class="row">
         <div class="col">
             <?php echo $form->field($model, 'firstname')?>
@@ -20,4 +20,4 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 
-<?php \app\core\form\Form::end() ?>
+<?php \abubakr\phpmvc\form\Form::end() ?>

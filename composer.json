@@ -11,5 +11,8 @@
             "app\\": "."
         }
     },
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.2",
+        "abubakr/php-mvc-core": "^1.0.4"
+    }
 }
